@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import {Events} from "./features/events/Events";
+import {EventListingModal} from "./features/events/eventListing/EventListingModal";
+import {NavBar} from "./ui-components/navBar/NavBar";
+import {RegisterUser} from "./features/users/registerUser/RegisterUser";
+import {ApplyEventModal} from "./features/applications/applyEventModal/ApplyEventModal";
+import {Listings} from "./features/events/Listings";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+          <Router>
+              <Switch>
+                  <Route exact path="/events" component={Events} />
+                  {/*<Route exact path="/:userId" component={ApplyEventModal} />*/}
+                  <Route exact path="/listings" component={Listings} />
+                  <Route exact path="/register" component={RegisterUser} />
+                  <Route exact path="/event/:id" component={EventListingModal} />
+                  <Redirect to="/events" />
+              </Switch>
+          </Router>
+      </>
   );
 }
 
