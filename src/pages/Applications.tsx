@@ -1,10 +1,8 @@
-import {NavBar} from "../../ui-components/navBar/NavBar";
+import {NavBar} from "../ui-components/navBar/NavBar";
 import {useSelector} from "react-redux";
-import {selectEvents} from "../events/eventsReducer/event.selector";
 import {useHistory} from "react-router-dom";
 import {Empty} from "antd";
-import {EventListingCard} from "../events/eventListing/EventListingCard";
-import {selectApplications} from "./applicationsReducer/application.selector";
+import {selectApplications} from "../features/applications/applicationsReducer/application.selector";
 
 export function Applications() {
     const applications = useSelector(selectApplications);
@@ -22,7 +20,7 @@ export function Applications() {
     return (
         <>
             <NavBar/>
-            <div className={`max-w-2xl m-auto py-20 space-y-5`}>
+            <div className={`max-w-3xl m-auto py-20 space-y-5`}>
                 {/*{eventsCardList}*/}
             </div>
         </>

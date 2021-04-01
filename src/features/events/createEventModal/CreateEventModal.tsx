@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Event} from "../eventsReducer/event.interface"
 import {addEvent} from "../eventsReducer/event.actions";
 import {RangeValue} from "rc-picker/lib/interface";
+import {addEventToUser} from "../../users/usersReducer/user.actions";
 
 const {Title} = Typography;
 const {TextArea} = Input;
@@ -67,6 +68,7 @@ export function CreateEventModal({onCancel}: Props) {
             accessibility,
         };
         dispatch(addEvent(newEvent));
+        dispatch(addEventToUser(newId.toString()));
         onCancel();
     }
 

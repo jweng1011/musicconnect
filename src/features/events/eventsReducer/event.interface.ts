@@ -8,7 +8,6 @@ export interface Event {
     location: string;
     startDate: moment.Moment;
     endDate: moment.Moment;
-    //1-500
     audienceSize: number;
     accessibility?: string[];
     musicGenre?: string[];

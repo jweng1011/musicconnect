@@ -30,11 +30,11 @@ export function ListingCard({onClick, event}: Props) {
     return (
         <>
             {ApplicantsModalVisibility ? applicantsModal : null}
-            <div className={`hover:shadow-lg bg-gray-200 border-2 border-gray-200 rounded-md p-5`} onClick={() => (console.log())}>
+            <div className={`hover:shadow-lg border-2 border-gray-200 rounded-md p-5`} onClick={() => (console.log())}>
                 <div className={`flex justify-between`}>
                     <div className={`space-y-4`}>
                         <div className={`space-y-1`}>
-                            <p className={`text-gray-600 font-bold m-0 pb-5`}>PAST EVENT</p>
+                            {/*<p className={`text-gray-600 font-bold m-0 pb-5`}>PAST EVENT</p>*/}
                             <p className={`text-gray-600 m-0`}>{startDate.format('MMMM D, yyyy') + " at " + startDate.format('h:mm A')}</p>
                             {/*<p>{endDate.format('MM/DD/YYYY HH:mm')}</p>*/}
                             <p className={`text-lg font-bold`}>{eventName}</p>

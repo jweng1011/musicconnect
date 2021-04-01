@@ -9,15 +9,15 @@ export const selectApplication = (appId: string) => {
 }
 
 // return list of Application objects given eventId
-export const selectEventApplications = (eventId: string) => {
-    return (state: RootState) => selectEvent(eventId)(state).appIds.map(
-        id => selectApplication(id)(state)
-    )
-}
+// export const selectEventApplications = (eventId: string) => {
+//     return (state: RootState) => selectEvent(eventId)(state).appIds.map(
+//         id => selectApplication(id)(state)
+//     )
+// }
 
-// return list of Application objects given userId
-export const selectUserApplications = (userId: string) => {
-    return (state: RootState) => selectUser(userId)(state).appIds.map(
-        id => selectApplication(id)(state)
-    )
-}
+// return list of Application objects given userIds
+// export const selectUserApplications = (userId: string) => {
+//     return (state: RootState) => selectUser(userId)(state).appIds.map(
+//         id => selectApplication(id)(state)
+//     )
+// }

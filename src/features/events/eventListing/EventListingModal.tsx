@@ -4,18 +4,18 @@ import {useDispatch, useSelector} from "react-redux";
 import {selectEvent} from "../eventsReducer/event.selector";
 import {NavBar} from "../../../ui-components/navBar/NavBar";
 import React from "react";
-import {useHistory} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 
 const {Title} = Typography;
 
-interface MatchProps {
-    match: any;
-}
+// interface MatchProps {
+//     match: any;
+// }
 
-export function EventListingModal({match}: MatchProps) {
-    const {id} = match.params;
-    console.log("id:", id);
-    const event = useSelector(selectEvent(id));
+export function EventListingModal() {
+    const { eventId } = useParams<{eventId: string}>();
+    console.log("id:", eventId);
+    const event = useSelector(selectEvent(eventId));
     console.log("event is:", event);
 
     const history = useHistory();
@@ -35,7 +35,7 @@ export function EventListingModal({match}: MatchProps) {
         <>
             <NavBar/>
             <Modal visible={true}
-                   onCancel={() => history.push(`/`)}
+                   onCancel={() => history.push(`/events`)}
                    footer={[
                        <Button key="back">
                            Close

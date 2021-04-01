@@ -1,7 +1,7 @@
-import {NavBar} from "../../ui-components/navBar/NavBar";
-import {EventListingCard} from "./eventListing/EventListingCard";
+import {NavBar} from "../ui-components/navBar/NavBar";
+import {EventListingCard} from "../features/events/eventListing/EventListingCard";
 import {useSelector} from "react-redux";
-import {selectEvents} from "./eventsReducer/event.selector";
+import {selectEvents} from "../features/events/eventsReducer/event.selector";
 import {useState} from "react";
 import {useHistory} from "react-router-dom";
 import {Empty} from "antd";
@@ -27,7 +27,7 @@ export function Events() {
     return (
         <>
             <NavBar/>
-            <div className={`max-w-2xl m-auto py-20 space-y-5`}>
+            <div className={`max-w-3xl m-auto py-20 space-y-5`}>
                 <Title level={3}>Events</Title>
                 {eventsCardList}
             </div>
