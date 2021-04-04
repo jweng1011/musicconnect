@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/musicconnect/static/css/main.6ecc1e8d.chunk.css",
-    "main.js": "/musicconnect/static/js/main.2a47b5f0.chunk.js",
-    "main.js.map": "/musicconnect/static/js/main.2a47b5f0.chunk.js.map",
-    "runtime-main.js": "/musicconnect/static/js/runtime-main.18f0838d.js",
-    "runtime-main.js.map": "/musicconnect/static/js/runtime-main.18f0838d.js.map",
+    "main.js": "/musicconnect/static/js/main.0bb138c4.chunk.js",
+    "main.js.map": "/musicconnect/static/js/main.0bb138c4.chunk.js.map",
+    "runtime-main.js": "/musicconnect/static/js/runtime-main.91873029.js",
+    "runtime-main.js.map": "/musicconnect/static/js/runtime-main.91873029.js.map",
     "static/css/2.f23775a9.chunk.css": "/musicconnect/static/css/2.f23775a9.chunk.css",
-    "static/js/2.42b57f26.chunk.js": "/musicconnect/static/js/2.42b57f26.chunk.js",
-    "static/js/2.42b57f26.chunk.js.map": "/musicconnect/static/js/2.42b57f26.chunk.js.map",
-    "static/js/3.fa512b7d.chunk.js": "/musicconnect/static/js/3.fa512b7d.chunk.js",
-    "static/js/3.fa512b7d.chunk.js.map": "/musicconnect/static/js/3.fa512b7d.chunk.js.map",
+    "static/js/2.60144a0a.chunk.js": "/musicconnect/static/js/2.60144a0a.chunk.js",
+    "static/js/2.60144a0a.chunk.js.map": "/musicconnect/static/js/2.60144a0a.chunk.js.map",
+    "static/js/3.bcd0e672.chunk.js": "/musicconnect/static/js/3.bcd0e672.chunk.js",
+    "static/js/3.bcd0e672.chunk.js.map": "/musicconnect/static/js/3.bcd0e672.chunk.js.map",
     "index.html": "/musicconnect/index.html",
     "static/css/2.f23775a9.chunk.css.map": "/musicconnect/static/css/2.f23775a9.chunk.css.map",
     "static/css/main.6ecc1e8d.chunk.css.map": "/musicconnect/static/css/main.6ecc1e8d.chunk.css.map",
-    "static/js/2.42b57f26.chunk.js.LICENSE.txt": "/musicconnect/static/js/2.42b57f26.chunk.js.LICENSE.txt"
+    "static/js/2.60144a0a.chunk.js.LICENSE.txt": "/musicconnect/static/js/2.60144a0a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.18f0838d.js",
+    "static/js/runtime-main.91873029.js",
     "static/css/2.f23775a9.chunk.css",
-    "static/js/2.42b57f26.chunk.js",
+    "static/js/2.60144a0a.chunk.js",
     "static/css/main.6ecc1e8d.chunk.css",
-    "static/js/main.2a47b5f0.chunk.js"
+    "static/js/main.0bb138c4.chunk.js"
   ]
 }
