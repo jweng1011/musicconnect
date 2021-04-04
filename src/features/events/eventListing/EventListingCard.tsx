@@ -9,14 +9,10 @@ const {Title} = Typography;
 interface Props {
     onClick: () => void;
     event: Event
+    showApplyModal: () => void;
 }
-export function EventListingCard({onClick, event}: Props) {
+export function EventListingCard({onClick, event, showApplyModal}: Props) {
     const {id, eventName, musicGenre, audienceSize, startDate, endDate, accessibility} = event;
-    const [ApplyModalVisibility, setApplyModalVisibility] = useState<boolean>(false);
-
-    const applyModal = <ApplyEventModal onCancel={() => setApplyModalVisibility(false)}
-                                        userId={"1"}
-                                        eventId={event.id}/>
 
     if (musicGenre) {
         console.log(musicGenre.map((x) => x))
@@ -29,8 +25,7 @@ export function EventListingCard({onClick, event}: Props) {
 
     return (
         <>
-            {ApplyModalVisibility ? applyModal : null}
-            <div className={`hover:shadow-lg border-2 border-gray-200 rounded-md p-5`} onClick={onClick}>
+            <div className={`hover:shadow-lg border border-gray-200 rounded-md p-5`} onClick={onClick}>
                 <div className={`flex justify-between`}>
                     <div className={`space-y-4`}>
                         <div className={`space-y-1`}>
@@ -47,7 +42,7 @@ export function EventListingCard({onClick, event}: Props) {
                         </div>
                     </div>
                     <div>
-                        <Button type="link" onClick={() => setApplyModalVisibility(true)}>Apply</Button>
+                        <Button type="link" onClick={showApplyModal}>Apply</Button>
                     </div>
                 </div>
             </div>

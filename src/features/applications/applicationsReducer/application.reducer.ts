@@ -17,6 +17,17 @@ export function applicationsReducer(
                     [newApp.id]: newApp,
                 }
             }
+        case "CHANGE_APP_STATUS":
+            const newStatus = action.payload[0];
+            const appId = action.payload[1];
+            const updatedApp = state.applications[appId];
+            updatedApp.status = newStatus;
+            return {
+                applications: {
+                    ...state.applications,
+                    [appId]: updatedApp,
+                }
+            }
         default:
             return state;
     }

@@ -1,49 +1,48 @@
 import {Form, Input, Modal, Select} from "antd";
 import {useState} from "react";
 import TextArea from "antd/es/input/TextArea";
-import {Application} from "../applicationsReducer/application.interface";
+import {Application, Status} from "../applicationsReducer/application.interface";
 import {useDispatch, useSelector} from "react-redux";
 import {addApplication} from "../applicationsReducer/application.actions";
-import {selectUser} from "../../users/usersReducer/user.selector";
+import {selectCurrUserId, selectUser} from "../../users/usersReducer/user.selector";
 import {selectEvent} from "../../events/eventsReducer/event.selector";
 import {useHistory} from "react-router-dom";
+import {addApplicationToEvent} from "../../events/eventsReducer/event.actions";
 
 let idGenerator = 0;
 
-// interface MatchProps {
-//     match: any;
-// }
-
 interface Props {
-    userId: string;
     eventId: string;
-    onCancel: () => void;
+    closeModal: () => void;
 }
 
-export function ApplyEventModal({userId, eventId, onCancel} : Props) {
+export function ApplyEventModal({eventId, closeModal} : Props) {
     const [performName, setPerformName] = useState("");
     const [performDescription, setPerformDescription] = useState("");
 
     const dispatch = useDispatch();
 
+    const currUserId = useSelector(selectCurrUserId);
+    const user = useSelector(selectUser(currUserId))
+    const event = useSelector(selectEvent(eventId));
+
     const handleOnOk = () => {
         const id = idGenerator++;
         let newApplication: Application = {
             id: id.toString(),
+            status: Status.pending,
+            userId: currUserId,
             performName: performName,
             performDescription: performDescription
         }
         dispatch(addApplication(newApplication));
-        onCancel()
+        dispatch(addApplicationToEvent(id.toString(), eventId));
+        closeModal()
     }
-
-    const user = useSelector(selectUser(userId));
-    const event = useSelector(selectEvent(eventId));
-    console.log("user:", user)
 
     const history = useHistory();
     return (
-        <Modal visible={true} onCancel={onCancel} onOk={handleOnOk}>
+        <Modal visible={true} onCancel={closeModal} onOk={handleOnOk}>
             <p className={`text-lg font-bold`}>Apply for {event.eventName}</p>
             <div className={`py-5 space-y-1`}>
                 <p className={`m-0`}>Name: <b>{user.firstName} {user.lastName} </b></p>

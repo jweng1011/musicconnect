@@ -11,6 +11,7 @@ interface Props {
     onClick: () => void;
     event: Event
 }
+
 export function ListingCard({onClick, event}: Props) {
     const {id, eventName, musicGenre, audienceSize, startDate, endDate, accessibility} = event;
     const [ApplicantsModalVisibility, setApplicantsModalVisibility] = useState<boolean>(false);
@@ -30,7 +31,7 @@ export function ListingCard({onClick, event}: Props) {
     return (
         <>
             {ApplicantsModalVisibility ? applicantsModal : null}
-            <div className={`hover:shadow-lg border-2 border-gray-200 rounded-md p-5`} onClick={() => (console.log())}>
+            <div className={`hover:shadow-lg border border-gray-200 rounded-md p-5`} onClick={() => (console.log())}>
                 <div className={`flex justify-between`}>
                     <div className={`space-y-4`}>
                         <div className={`space-y-1`}>

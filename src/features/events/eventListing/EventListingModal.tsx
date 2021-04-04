@@ -3,22 +3,19 @@ import {Event} from "../eventsReducer/event.interface";
 import {useDispatch, useSelector} from "react-redux";
 import {selectEvent} from "../eventsReducer/event.selector";
 import {NavBar} from "../../../ui-components/navBar/NavBar";
-import React from "react";
+import React, {useState} from "react";
 import {useHistory, useParams} from "react-router-dom";
 
 const {Title} = Typography;
 
-// interface MatchProps {
-//     match: any;
-// }
+interface Props {
+    eventId: string;
+    closeModal: () => void;
+    showApplyModal: () => void;
+}
 
-export function EventListingModal() {
-    const { eventId } = useParams<{eventId: string}>();
-    console.log("id:", eventId);
+export function EventListingModal({eventId, closeModal, showApplyModal} : Props) {
     const event = useSelector(selectEvent(eventId));
-    console.log("event is:", event);
-
-    const history = useHistory();
 
     if (!event) {
         return <Title>Event not found!</Title>
@@ -32,15 +29,14 @@ export function EventListingModal() {
     }
 
     return (
-        <>
-            <NavBar/>
             <Modal visible={true}
-                   onCancel={() => history.push(`/events`)}
+                   onOk={closeModal}
+                   onCancel={closeModal}
                    footer={[
-                       <Button key="back">
+                       <Button key="cancel" onClick={closeModal}>
                            Close
                        </Button>,
-                       <Button key="submit" type="primary">
+                       <Button key="submit" type="primary" onClick={showApplyModal}>
                            Apply
                        </Button>,
                    ]}
@@ -49,11 +45,7 @@ export function EventListingModal() {
                     <p className={`text-gray-600 m-0`}>{startDate.format('MMMM D, yyyy') + " at " + startDate.format('h:mm A')}</p>
                     {/*<p>{endDate.format('MM/DD/YYYY HH:mm')}</p>*/}
                     <p className={`text-lg font-bold m-0`}>{eventName}</p>
-                    <p className={`m-0`}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
+                    <p className={`m-0`}>{eventDescription}</p>
                     <div className={`space-y-2`}>
                         <p className={`text-gray-700 m-0`}>Genre(s): {musicGenre ? musicGenre.map((x) =>
                             <Tag>{x}</Tag>) : null}</p>
@@ -64,26 +56,5 @@ export function EventListingModal() {
                     </div>
                 </div>
             </Modal>
-        </>
-
     )
-    //
-    //
-    // let accessSettings: string[] = [];
-    // if (accessibility) {
-    //     accessSettings = accessibility.map((x) => x);
-    // }
-    //
-    // return (
-    //     <>
-    //         <Title level={4}>{eventName}</Title>
-    //         <p>{eventDescription}</p>
-    //         <p>{musicGenre}</p>
-    //         <p>Audience Size: {audienceSize}</p>
-    //         <p>Date: {startDate} - {endDate}</p>
-    //         {Object.values(accessSettings).map((x) => (
-    //             <Tag>{x}</Tag>
-    //         ))}
-    // //     </>
-    // // )
 }
