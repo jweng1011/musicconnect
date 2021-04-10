@@ -1,9 +1,8 @@
-import {Input, Modal, Typography, Form, DatePicker, Slider, Button, Checkbox, Select} from "antd";
+import {Checkbox, DatePicker, Form, Input, Modal, Radio, Select, Typography} from "antd";
 import {useState} from "react";
 import moment from "moment";
-import {AccessibilityTypes, EventType, MusicGenreType} from "../eventsReducer/event.interface";
-import {useDispatch, useSelector} from "react-redux";
-import {Event} from "../eventsReducer/event.interface"
+import {AccessibilityTypes, AudienceSize, Event, MusicGenreType} from "../eventsReducer/event.interface";
+import {useDispatch} from "react-redux";
 import {addEvent} from "../eventsReducer/event.actions";
 import {RangeValue} from "rc-picker/lib/interface";
 import {addEventToUser} from "../../users/usersReducer/user.actions";
@@ -30,7 +29,7 @@ export function CreateEventModal({onCancel}: Props) {
     const [endDate, setEndDate] = useState<moment.Moment | null>(moment());
 
     // whats the difference between event space and audience size?
-    const [audienceSize, setAudienceSize] = useState<number>(1);
+    const [audienceSize, setAudienceSize] = useState<AudienceSize>(AudienceSize.Small);
     const [accessibility, setAccessibility] = useState<string[]>([]);
 
     const [musicGenre, setMusicGenre] = useState<string[]>([]);
@@ -46,7 +45,7 @@ export function CreateEventModal({onCancel}: Props) {
         setAudienceSize(value);
     }
 
-    const appIds: string[] = [];
+    const appIds: number[] = [];
     const handleOnOk = () => {
         // add error checking
         if (startDate === null || endDate === null) {
@@ -56,10 +55,10 @@ export function CreateEventModal({onCancel}: Props) {
         }
         let newId = idGenerator++;
         const newEvent: Event = {
-            id: newId.toString(),
+            id: newId,
             appIds,
-            eventName,
-            eventDescription,
+            name: eventName,
+            description: eventDescription,
             location,
             startDate,
             endDate,
@@ -68,7 +67,7 @@ export function CreateEventModal({onCancel}: Props) {
             accessibility,
         };
         dispatch(addEvent(newEvent));
-        dispatch(addEventToUser(newId.toString()));
+        dispatch(addEventToUser(newId));
         onCancel();
     }
 
@@ -124,7 +123,7 @@ export function CreateEventModal({onCancel}: Props) {
                                message: "Please enter the event's date",
                            }]}
                 >
-                    <RangePicker showTime onChange={(dateRange: RangeValue<moment.Moment>) => {
+                    <RangePicker onChange={(dateRange: RangeValue<moment.Moment>) => {
                         if (dateRange === null) {
                             return;
                         }
@@ -139,7 +138,13 @@ export function CreateEventModal({onCancel}: Props) {
                                message: "Please enter an estimated audience size",
                            }]}
                 >
-                    <Slider defaultValue={audienceSize} max={500} min={1} onAfterChange={onAudienceChange}/>
+                    <Radio.Group onChange={(e) => {
+                        setAudienceSize(e.target.value)
+                    }}>
+                        <Radio.Button style={{display: 'block'}} value={AudienceSize.Small}>Small (1-10 people)</Radio.Button>
+                        <Radio.Button style={{display: 'block'}} value={AudienceSize.Medium}>Medium (50-100 people)</Radio.Button>
+                        <Radio.Button style={{display: 'block'}} value={AudienceSize.Large}>Large (100+ people)</Radio.Button>
+                    </Radio.Group>
                 </Form.Item>
                 <Form.Item label="Music Genre(s)"
                            name="musicGenre"

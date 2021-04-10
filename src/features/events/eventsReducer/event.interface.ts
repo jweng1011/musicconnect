@@ -1,20 +1,39 @@
 import moment from "moment";
 
 export interface Event {
-    id: string;
-    appIds: string[];
-    eventName: string;
-    eventDescription: string;
+    id: number;
+    appIds: number[];
+    name: string;
+    description: string;
     location: string;
     startDate: moment.Moment;
     endDate: moment.Moment;
-    audienceSize: number;
-    accessibility?: string[];
-    musicGenre?: string[];
-    yearsOfExperience?: YearsExperienceType;
+    audienceSize: AudienceSize;
+    accessibility: string[];
+    musicGenre: string[];
+    // yearsOfExperience?: YearsExperienceType;
 }
 
-// export type AccessibilityTypes = "Handicap" | "Hearing";
+export interface EventDTO {
+    id: number;
+    appIds: number[];
+    name: string;
+    description: string;
+    location: string;
+    startDate: number;
+    endDate: number;
+    audienceSize: AudienceSize;
+    accessibility: string[];
+    musicGenre: string[];
+    // yearsOfExperience?: YearsExperienceType;
+}
+
+export enum AudienceSize {
+    Small = "Small",
+    Medium = "Medium",
+    Large = "Large",
+}
+
 export enum AccessibilityTypes {
     Handicap = "HANDICAP",
     Hearing = "HEARING",

@@ -8,7 +8,7 @@ export function addApplication(newApp: Application): AppActionTypes {
     }
 }
 
-export function changeAppStatus(newStatus: Status, appId: string): AppActionTypes {
+export function changeAppStatus(newStatus: Status, appId: number): AppActionTypes {
     return {
         type: CHANGE_APP_STATUS,
         payload: [newStatus, appId]

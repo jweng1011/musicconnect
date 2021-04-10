@@ -4,13 +4,15 @@ import {useSelector} from "react-redux";
 import {selectEvents} from "../features/events/eventsReducer/event.selector";
 import {useState} from "react";
 import {useHistory} from "react-router-dom";
-import {Empty} from "antd";
+import {Empty, Tabs} from "antd";
 import Title from "antd/es/typography/Title";
 import {EventListingModal} from "../features/events/eventListing/EventListingModal";
 import {Event} from "../features/events/eventsReducer/event.interface";
 import {CreateEventModal} from "../features/events/createEventModal/CreateEventModal";
 import {ApplyEventModal} from "../features/applications/applyEventModal/ApplyEventModal";
 import {selectCurrUserId} from "../features/users/usersReducer/user.selector";
+
+const { TabPane } = Tabs;
 
 // interface MatchProps {
 //     match: any;
@@ -21,10 +23,10 @@ export function Events() {
     const user = useSelector(selectCurrUserId);
     const [isEventModalVisible, setEventModalVisible] = useState(false);
     const [isApplyEventModalVisible, setApplyEventModalVisible] = useState(false);
-    const [currEvent, setCurrEvent] = useState("");
+    const [currEvent, setCurrEvent] = useState(-1);
     const history = useHistory();
 
-    const handleOnClickEvent = (key: string) => () => {
+    const handleOnClickEvent = (key: number) => () => {
         setEventModalVisible(true);
         setCurrEvent(key)
     }
@@ -37,24 +39,25 @@ export function Events() {
         setApplyEventModalVisible(false);
     }
 
-    const handleShowApplyModal = () => {
+    const handleOnApply = (key: number) => () => {
         setApplyEventModalVisible(true);
+        setCurrEvent(key)
         setEventModalVisible(false);
     }
 
-    const eventsCardList = (Object.keys(events).length === 0) ?
+    const eventsCardList = ( Object.keys(events).length === 0) ?
         <Empty className={`py-20`} description={"No events available yet!"} /> :
-        Object.keys(events).map((key: string) => (
+        Object.values(events).map((e) => (
                 <EventListingCard
-                    onClick={handleOnClickEvent(key)}
-                    event={events[key]}
-                    showApplyModal={handleShowApplyModal}
+                    onClick={handleOnClickEvent(e.id)}
+                    event={e}
+                    onApply={handleOnApply(e.id)}
                 />
             ))
 
     const eventModal = <EventListingModal eventId={currEvent}
                                           closeModal={handleCloseEventModal}
-                                          showApplyModal={handleShowApplyModal}
+                                          onApply={handleOnApply(currEvent)}
     />
 
     const applyModal = <ApplyEventModal eventId={currEvent} closeModal={handleCloseApplyModal} />
@@ -64,9 +67,13 @@ export function Events() {
             {isApplyEventModalVisible ? applyModal : null}
             {isEventModalVisible ? eventModal : null}
             <NavBar/>
-            <div className={`max-w-3xl m-auto py-20 space-y-5`}>
+            <div className={`max-w-3xl m-auto py-16 space-y-3`}>
                 <Title level={3}>Events</Title>
-                {eventsCardList}
+                <Tabs defaultActiveKey="1">
+                    <TabPane tab="Browse all" key="1">
+                            {eventsCardList}
+                    </TabPane>
+                </Tabs>
             </div>
         </>
     )

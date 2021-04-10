@@ -21,7 +21,7 @@ interface Props {
 export function ApplicantsModal({event, onCancel} : Props) {
     const [statusChange, setStatusChange] = useState<boolean>(false);
     const [confirmVisible, setConfirmVisible] = useState<boolean>(false);
-    const [currAppId, setCurrAppId] = useState("");
+    const [currAppId, setCurrAppId] = useState<number>(0);
 
     const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ export function ApplicantsModal({event, onCancel} : Props) {
         setConfirmVisible(false);
     }
 
-    const handleOnStatusChangeRequest = (newStatus: Status, appId: string) => {
+    const handleOnStatusChangeRequest = (newStatus: Status, appId: number) => {
         if (newStatus === Status.accepted) {
             setStatusChange(true);
         } else {
@@ -66,7 +66,7 @@ export function ApplicantsModal({event, onCancel} : Props) {
             {confirmVisible ? ApplicantConfirm : null }
             <Modal visible={true} onCancel={handleOnCancel} onOk={onCancel}>
                 <div className={`space-y-5`}>
-                    <p className={`text-lg font-bold`}>Applicants for {event.eventName}</p>
+                    <p className={`text-lg font-bold`}>Applicants for {event.name}</p>
                     {appIds.map((value) => (
                         <ApplicantContent appId={value} onStatusChangeRequest={handleOnStatusChangeRequest}/>
                     ))}

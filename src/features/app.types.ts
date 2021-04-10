@@ -23,12 +23,12 @@ export interface AddUserAction {
 
 export interface LoginUserAction {
     type: typeof LOGIN_USER;
-    payload: string;
+    payload: number;
 }
 
 export interface AddEventToUserAction {
     type: typeof ADD_EVENT_TO_USER;
-    payload: string;
+    payload: number;
 }
 
 export interface AddApplicationAction {
@@ -38,17 +38,17 @@ export interface AddApplicationAction {
 
 export interface LogoutUserAction {
     type: typeof LOGOUT_USER;
-    payload: string;
+    payload: number;
 }
 
 export interface AddAppToEventAction {
     type: typeof ADD_APP_TO_EVENT;
-    payload: [string, string];
+    payload: [number, number];
 }
 
 export interface ChangeAppStatus {
     type: typeof CHANGE_APP_STATUS;
-    payload: [Status, string];
+    payload: [Status, number];
 }
 
 export type AppActionTypes = AddEventAction |

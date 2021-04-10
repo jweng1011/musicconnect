@@ -1,11 +1,29 @@
 import {UsersState} from "./user.types";
 import {AppActionTypes} from "../../app.types";
+import {User} from "./user.interface";
+
+const dummyUser: User = {
+    id: 0,
+    // userType: UserType;
+    appIds: [],
+    eventIds: [0, 1],
+    firstName: "Dummy",
+    lastName: "User",
+    email: "dummyUser@gmail.com",
+    password: "dummyuser",
+}
 
 const initialState: UsersState = {
-    users: {},
-    user: "",
+    users: {[0]: dummyUser},
+    user: -1,
     isLoggedIn: false,
 }
+
+// const initialState: UsersState = {
+//     users: {},
+//     user: -1,
+//     isLoggedIn: false,
+// }
 
 export function usersReducer(
     state = initialState,
@@ -32,17 +50,11 @@ export function usersReducer(
         case "LOGOUT_USER":
             return {
                 users: state.users,
-                user: "",
+                user: -1,
                 isLoggedIn: false,
             }
         case "ADD_EVENT_TO_USER":
             const eventId = action.payload;
-            // let updatedEvents: string[] = [];
-            // if (state.users[state.user].eventIds.length === 0) {
-            //     updatedEvents = [eventId];
-            // } else {
-            //     updatedEvents = [...state.users[state.user].eventIds, eventId];
-            // }
             const updatedEvents = [...state.users[state.user].eventIds, eventId];
             const updatedUser = {...state.users[state.user], eventIds: updatedEvents}
             return {

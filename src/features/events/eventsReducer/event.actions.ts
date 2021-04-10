@@ -8,7 +8,7 @@ export function addEvent(newEvent: Event): AppActionTypes {
     };
 }
 
-export function addApplicationToEvent(newAppId: string, eventId: string): AppActionTypes {
+export function addApplicationToEvent(newAppId: number, eventId: number): AppActionTypes {
     return {
         type: ADD_APP_TO_EVENT,
         payload: [newAppId, eventId]

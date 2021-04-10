@@ -5,8 +5,9 @@ import {Events} from "./pages/Events";
 import {EventListingModal} from "./features/events/eventListing/EventListingModal";
 import {RegisterUser} from "./pages/RegisterUser";
 import {ApplyEventModal} from "./features/applications/applyEventModal/ApplyEventModal";
-import {Listings} from "./pages/Listings";
+import {MyEvents} from "./pages/MyEvents";
 import {SignIn} from "./pages/SignIn";
+import {Applications} from "./pages/Applications";
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
           <Router>
               <Switch>
                   <Route exact path="/events" component={Events} />
-                  {/*<Route exact path="/:userId" component={ApplyEventModal} />*/}
-                  <Route exact path="/listings" component={Listings} />
+                  <Route exact path="/myEvents" component={MyEvents} />
+                  <Route exact path="/applications" component={Applications} />
                   <Route exact path="/register" component={RegisterUser} />
                   <Route exact path="/event/:eventId" component={EventListingModal} />
                   <Route exact path="/login" component={SignIn}/>

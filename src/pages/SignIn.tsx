@@ -1,13 +1,15 @@
 import Title from "antd/es/typography/Title";
-import {Button, Divider, Form, Input} from "antd";
+import {Alert, Button, Divider, Form, Input} from "antd";
 import {useState} from "react";
 import {useHistory} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {loginUser} from "../features/users/usersReducer/user.actions";
+import {selectUserIdByEmail} from "../features/users/usersReducer/user.selector";
 
 export function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loginErrorVisible, setLoginErrorVisible] = useState(false);
 
     const [requiredMark, setRequiredMarkType] = useState<boolean>();
     const onRequiredTypeChange = (requiredMark: boolean) => {
@@ -16,15 +18,23 @@ export function SignIn() {
 
     const history = useHistory();
     const dispatch = useDispatch();
+    const userId = useSelector(selectUserIdByEmail(email));
 
     const handleOnSignIn = () => {
-        dispatch(loginUser(email));
-        history.push(`/events`);
+        if (userId === -1) {
+            // error user not found
+            setLoginErrorVisible(true);
+        } else {
+            dispatch(loginUser(userId));
+            history.push(`/events`);
+        }
     }
 
     const handleOnRegister = () => {
         history.push(`register`);
     }
+
+    const LoginError = <p className={`text-red-500`}>Your email or password is incorrect!</p>
 
     return (
         <div className={`max-w-sm m-auto py-28`}>
@@ -57,6 +67,7 @@ export function SignIn() {
                            onChange={(e) => setPassword(e.target.value)} />
                 </Form.Item>
             </Form>
+            {loginErrorVisible ? LoginError : null}
             <div className={`pt-5 pb-20`}>
                 <Button size={"large"}
                         type={"primary"}

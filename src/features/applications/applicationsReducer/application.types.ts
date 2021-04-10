@@ -1,5 +1,5 @@
 import {Application} from "./application.interface";
 
 export interface ApplicationsState {
-    applications: {[id: string] : Application}
+    applications: {[id: number] : Application}
 }

@@ -1,4 +1,4 @@
-import {Button, Divider, Form, Input} from "antd";
+import {Button, Divider, Form, Input, Radio} from "antd";
 import {useState} from "react";
 import Title from "antd/es/typography/Title";
 import {User} from "../features/users/usersReducer/user.interface";
@@ -6,25 +6,27 @@ import {useDispatch} from "react-redux";
 import {addUser, loginUser} from "../features/users/usersReducer/user.actions";
 import {useHistory} from "react-router-dom";
 
-let idGenerator = 0;
+let idGenerator = 1;
 export function RegisterUser() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    // const [userType, setUserType] = useState(UserType.Regular);
 
     const [requiredMark, setRequiredMarkType] = useState<boolean>();
     const onRequiredTypeChange = (requiredMark: boolean) => {
         setRequiredMarkType(requiredMark);
     }
 
-    const appIds: string[] = [];
-    const eventIds: string[] = [];
+    const appIds: number[] = [];
+    const eventIds: number[] = [];
+    let id: number;
     const dispatch = useDispatch();
 
     const handleOnOk = () => {
-        // idGenerator++;
-        // let id = idGenerator;
+        idGenerator++;
+        id = idGenerator;
         let newUser: User = {
             firstName,
             lastName,
@@ -33,10 +35,11 @@ export function RegisterUser() {
             eventIds,
             password,
             // id: id.toString(),
-            id: email,
+            id,
+            // userType,
         }
         dispatch(addUser(newUser));
-        dispatch(loginUser(email));
+        dispatch(loginUser(id));
         // console.log("id of new user is:", id.toString());
         history.push(`/events`)
     }
@@ -96,6 +99,18 @@ export function RegisterUser() {
                            value={password}
                            onChange={(e) => setPassword(e.target.value)} />
                 </Form.Item>
+                {/*<Form.Item label="Please select your role:"*/}
+                {/*           rules={[{*/}
+                {/*               required: true,*/}
+                {/*               message: "Please select user type",*/}
+                {/*           }]}*/}
+                {/*           name="userType"*/}
+                {/*           >*/}
+                {/*    <Radio.Group>*/}
+                {/*        <Radio.Button value="host">Host</Radio.Button>*/}
+                {/*        <Radio.Button value="regular">Musician</Radio.Button>*/}
+                {/*    </Radio.Group>*/}
+                {/*</Form.Item>*/}
             </Form>
             <div className={`pt-5 pb-20`}>
                 <Button size={"large"}

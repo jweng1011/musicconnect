@@ -5,8 +5,8 @@ import {selectCurrUserId, selectUser} from "../../users/usersReducer/user.select
 import {Status} from "../applicationsReducer/application.interface";
 
 interface Props {
-    appId: string;
-    onStatusChangeRequest: (newStatus: Status, appId: string) => void;
+    appId: number;
+    onStatusChangeRequest: (newStatus: Status, appId: number) => void;
 }
 
 export function ApplicantContent({appId, onStatusChangeRequest}: Props) {
@@ -38,7 +38,7 @@ export function ApplicantContent({appId, onStatusChangeRequest}: Props) {
                     <p>{application.performName}</p>
                     <p>{application.performDescription}</p>
                 </div>
-                <div className={`flex flex-col justify-between text-right`}>
+                <div className={`flex flex-col justify-between text-right space-y-3`}>
                     <div>
                         <StatusTag />
                     </div>

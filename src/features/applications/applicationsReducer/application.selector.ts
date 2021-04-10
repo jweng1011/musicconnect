@@ -4,7 +4,7 @@ import {selectUser} from "../../users/usersReducer/user.selector";
 
 export const selectApplicationState = (state: RootState) => state.applications;
 export const selectApplications = (state: RootState) => selectApplicationState(state).applications;
-export const selectApplication = (appId: string) => {
+export const selectApplication = (appId: number) => {
     return (state: RootState) => selectApplications(state)[appId]
 }
 

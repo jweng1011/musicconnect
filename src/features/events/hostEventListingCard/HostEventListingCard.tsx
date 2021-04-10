@@ -12,8 +12,8 @@ interface Props {
     event: Event
 }
 
-export function ListingCard({onClick, event}: Props) {
-    const {id, eventName, musicGenre, audienceSize, startDate, endDate, accessibility} = event;
+export function HostEventListingCard({onClick, event}: Props) {
+    const {id, name, musicGenre, audienceSize, startDate, endDate, accessibility} = event;
     const [ApplicantsModalVisibility, setApplicantsModalVisibility] = useState<boolean>(false);
 
     const applicantsModal = <ApplicantsModal onCancel={() => setApplicantsModalVisibility(false)}
@@ -38,7 +38,7 @@ export function ListingCard({onClick, event}: Props) {
                             {/*<p className={`text-gray-600 font-bold m-0 pb-5`}>PAST EVENT</p>*/}
                             <p className={`text-gray-600 m-0`}>{startDate.format('MMMM D, yyyy') + " at " + startDate.format('h:mm A')}</p>
                             {/*<p>{endDate.format('MM/DD/YYYY HH:mm')}</p>*/}
-                            <p className={`text-lg font-bold`}>{eventName}</p>
+                            <p className={`text-lg font-bold`}>{name}</p>
                         </div>
                         <div className={`space-y-2`}>
                             <p className={`text-gray-700 m-0`}>Genre(s): {musicGenre ? musicGenre.map((x) => <Tag>{x}</Tag>) : null}</p>

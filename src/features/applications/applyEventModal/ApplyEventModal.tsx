@@ -8,11 +8,12 @@ import {selectCurrUserId, selectUser} from "../../users/usersReducer/user.select
 import {selectEvent} from "../../events/eventsReducer/event.selector";
 import {useHistory} from "react-router-dom";
 import {addApplicationToEvent} from "../../events/eventsReducer/event.actions";
+import moment from "moment";
 
 let idGenerator = 0;
 
 interface Props {
-    eventId: string;
+    eventId: number;
     closeModal: () => void;
 }
 
@@ -29,21 +30,23 @@ export function ApplyEventModal({eventId, closeModal} : Props) {
     const handleOnOk = () => {
         const id = idGenerator++;
         let newApplication: Application = {
-            id: id.toString(),
+            id: id,
+            eventId: eventId,
             status: Status.pending,
             userId: currUserId,
             performName: performName,
-            performDescription: performDescription
+            performDescription: performDescription,
+            dateApplied: moment(),
         }
         dispatch(addApplication(newApplication));
-        dispatch(addApplicationToEvent(id.toString(), eventId));
+        dispatch(addApplicationToEvent(id, eventId));
         closeModal()
     }
 
     const history = useHistory();
     return (
         <Modal visible={true} onCancel={closeModal} onOk={handleOnOk}>
-            <p className={`text-lg font-bold`}>Apply for {event.eventName}</p>
+            <p className={`text-lg font-bold`}>Apply for {event.name}</p>
             <div className={`py-5 space-y-1`}>
                 <p className={`m-0`}>Name: <b>{user.firstName} {user.lastName} </b></p>
                 <p  className={`m-0`}>Email Address: <b>{user.email}</b></p>
