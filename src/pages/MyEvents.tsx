@@ -22,7 +22,7 @@ export function MyEvents() {
 
     const noEventsMessage = <div>
         <p className={`text-lg`}>Welcome to your events dashboard! Create an event to get started.</p>
-        <Button type="primary" onClick={() => setIsCreateEventVisible(true)}>Create Event</Button>
+        {/*<Button type="primary" onClick={() => setIsCreateEventVisible(true)}>Create Event</Button>*/}
     </div>
 
     const eventsCardList = (events.length === 0) ?
