@@ -2,13 +2,16 @@ import {Event} from "./events/eventsReducer/event.interface"
 import {User} from "./users/usersReducer/user.interface"
 import {Application, Status} from "./applications/applicationsReducer/application.interface";
 
-export const ADD_EVENT = "ADD_EVENT";
 export const ADD_USER = "ADD_USER";
+export const EDIT_USER = "EDIT_USER";
 export const LOGIN_USER = "LOGIN_USER";
-export const ADD_APPLICATION = "ADD_APPLICATION";
 export const ADD_EVENT_TO_USER = "ADD_EVENT_TO_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
+
+export const ADD_EVENT = "ADD_EVENT";
 export const ADD_APP_TO_EVENT = "ADD_APP_TO_EVENT";
+
+export const ADD_APPLICATION = "ADD_APPLICATION";
 export const CHANGE_APP_STATUS = "CHANGE_APP_STATUS";
 
 export interface AddEventAction {
@@ -16,6 +19,10 @@ export interface AddEventAction {
     payload: Event;
 }
 
+export interface EditUserAction {
+    type: typeof EDIT_USER;
+    payload: User;
+}
 export interface AddUserAction {
     type: typeof ADD_USER;
     payload: User;
@@ -58,4 +65,5 @@ export type AppActionTypes = AddEventAction |
     AddEventToUserAction |
     LogoutUserAction |
     AddAppToEventAction |
-    ChangeAppStatus;
+    ChangeAppStatus |
+    EditUserAction;

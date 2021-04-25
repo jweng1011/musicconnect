@@ -1,9 +1,16 @@
-import {ADD_EVENT_TO_USER, ADD_USER, AppActionTypes, LOGIN_USER, LOGOUT_USER} from "../../app.types";
+import {ADD_EVENT_TO_USER, ADD_USER, AppActionTypes, EDIT_USER, LOGIN_USER, LOGOUT_USER} from "../../app.types";
 import {User} from "../usersReducer/user.interface"
 
 export function addUser(newUser: User): AppActionTypes {
     return {
         type: ADD_USER,
+        payload: newUser,
+    }
+}
+
+export function editUser(newUser: User): AppActionTypes {
+    return {
+        type: EDIT_USER,
         payload: newUser,
     }
 }

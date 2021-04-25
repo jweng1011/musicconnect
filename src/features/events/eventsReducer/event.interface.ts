@@ -29,14 +29,14 @@ export interface EventDTO {
 }
 
 export enum AudienceSize {
-    Small = "Small",
-    Medium = "Medium",
-    Large = "Large",
+    Small = "1-50",
+    Medium = "50-100",
+    Large = "100+",
 }
 
 export enum AccessibilityTypes {
-    Handicap = "HANDICAP",
-    Hearing = "HEARING",
+    "Wheelchair Accessible" = "WHEELCHAIR",
+    "Assistive Listening" = "HEARING",
 }
 
 export enum MusicGenreType {

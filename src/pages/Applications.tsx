@@ -31,7 +31,7 @@ export function Applications() {
             {/*{isAppModalVisible ? }*/}
             <NavBar/>
             <div className={`max-w-3xl m-auto py-16 space-y-5`}>
-                <Title level={3}>My Applications</Title>
+                <Title level={4}>My Applications</Title>
                 {applicationsCardList}
             </div>
         </>

@@ -4,7 +4,8 @@ import {useState} from "react";
 import {useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {loginUser} from "../features/users/usersReducer/user.actions";
-import {selectUserIdByEmail} from "../features/users/usersReducer/user.selector";
+import {selectUser, selectUserIdByEmail} from "../features/users/usersReducer/user.selector";
+import {UserType} from "../features/users/usersReducer/user.interface";
 
 export function SignIn() {
     const [email, setEmail] = useState("");
@@ -19,14 +20,19 @@ export function SignIn() {
     const history = useHistory();
     const dispatch = useDispatch();
     const userId = useSelector(selectUserIdByEmail(email));
+    const user = useSelector(selectUser(userId));
 
     const handleOnSignIn = () => {
         if (userId === -1) {
-            // error user not found
+            // error user not foun d
             setLoginErrorVisible(true);
         } else {
             dispatch(loginUser(userId));
-            history.push(`/events`);
+            if (user.userType === UserType.Host) {
+                history.push(`/eventDashboard`);
+            } else {
+                history.push(`/events`);
+            }
         }
     }
 

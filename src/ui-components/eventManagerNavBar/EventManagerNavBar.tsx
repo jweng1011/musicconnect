@@ -16,11 +16,11 @@ export function EventManagerNavBar() {
             <div className={`bg-gray-50 shadow-md`}>
                 <div className={`max-w-3xl m-auto py-7 flex justify-between items-center`}>
                     <div className={`space-x-10`}>
-                        <Link to="/myEvents" className={`text-gray-900 text-base`}>My Events</Link>
+                        <Link to="/myEvents" className={`text-gray-900 text-base`}>Dashboard</Link>
                     </div>
                     <div className={`flex items-center space-x-5`}>
                         {/*<Button type="primary" onClick={() => setIsCreateEventVisible(true)}>Create Event</Button>*/}
-                        <Button type="ghost" onClick={() => history.push("/events")}>Return to home</Button>
+                        <Button type="ghost" onClick={() => history.push("/events")}>Go to Music Connect</Button>
                         <UserProfileMenu />
                     </div>
                 </div>

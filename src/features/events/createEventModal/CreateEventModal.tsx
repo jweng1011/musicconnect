@@ -123,13 +123,16 @@ export function CreateEventModal({onCancel}: Props) {
                                message: "Please enter the event's date",
                            }]}
                 >
-                    <RangePicker onChange={(dateRange: RangeValue<moment.Moment>) => {
+                    <RangePicker
+                        onChange={(dateRange: RangeValue<moment.Moment>) => {
                         if (dateRange === null) {
                             return;
                         }
                         setStartDate(dateRange[0]);
-                        setEndDate(dateRange[1])
-                    }}/>
+                        setEndDate(dateRange[1]);
+                         }}
+                        showTime={{format: 'HH:mm'}}
+                    />
                 </Form.Item>
                 <Form.Item label="Audience Size"
                            name="audienceSize"
@@ -141,7 +144,7 @@ export function CreateEventModal({onCancel}: Props) {
                     <Radio.Group onChange={(e) => {
                         setAudienceSize(e.target.value)
                     }}>
-                        <Radio.Button style={{display: 'block'}} value={AudienceSize.Small}>Small (1-10 people)</Radio.Button>
+                        <Radio.Button style={{display: 'block'}} value={AudienceSize.Small}>Small (1-50 people)</Radio.Button>
                         <Radio.Button style={{display: 'block'}} value={AudienceSize.Medium}>Medium (50-100 people)</Radio.Button>
                         <Radio.Button style={{display: 'block'}} value={AudienceSize.Large}>Large (100+ people)</Radio.Button>
                     </Radio.Group>
@@ -163,12 +166,15 @@ export function CreateEventModal({onCancel}: Props) {
                 </Form.Item>
                 <Form.Item label="Accessibility"
                            name="accessibility">
-                    <Checkbox.Group value={accessibility} options={accessibilityOptions}
-                        onChange={(checkedValue) => {
-                            console.log(Object.values(checkedValue).map((x) => x.toString()))
-                            setAccessibility(Object.values(checkedValue).map((x) => x.toString()));
-                        }}
-                    />
+                    <div>
+                        <p>description</p>
+                        <Checkbox.Group value={accessibility} options={accessibilityOptions}
+                                        onChange={(checkedValue) => {
+                                            console.log(Object.values(checkedValue).map((x) => x.toString()))
+                                            setAccessibility(Object.values(checkedValue).map((x) => x.toString()));
+                                        }}
+                        />
+                    </div>
                 </Form.Item>
             </Form>
         </Modal>

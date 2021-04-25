@@ -1,6 +1,8 @@
+import {AccessibilityTypes} from "../../events/eventsReducer/event.interface";
+
 export interface User {
     id: number;
-    // userType: UserType;
+    userType: UserType;
     appIds: number[];
     eventIds: number[];
     firstName: string;
@@ -8,9 +10,10 @@ export interface User {
     email: string;
     password: string;
     phoneNumber?: number;
+    accessibility: string[];
 }
-//
-// export enum UserType {
-//     Host,
-//     Regular,
-// }
+
+export enum UserType {
+    Host,
+    Musician,
+}

@@ -1,20 +1,36 @@
 import {UsersState} from "./user.types";
 import {AppActionTypes} from "../../app.types";
-import {User} from "./user.interface";
+import {User, UserType} from "./user.interface";
 
-const dummyUser: User = {
+const musician: User = {
     id: 0,
-    // userType: UserType;
+    userType: UserType.Musician,
     appIds: [],
     eventIds: [0, 1],
-    firstName: "Dummy",
+    firstName: "Musician",
     lastName: "User",
-    email: "dummyUser@gmail.com",
-    password: "dummyuser",
+    email: "musician@gmail.com",
+    password: "musician",
+    accessibility: [],
 }
 
+const host: User = {
+    id: 1,
+    userType: UserType.Host,
+    appIds: [],
+    eventIds: [0, 1],
+    firstName: "Host",
+    lastName: "User",
+    email: "host@gmail.com",
+    password: "host",
+    accessibility: [],
+}
+
+
 const initialState: UsersState = {
-    users: {[0]: dummyUser},
+    users: {[0]: musician,
+            [1]: host,
+    },
     user: -1,
     isLoggedIn: false,
 }
@@ -36,6 +52,16 @@ export function usersReducer(
                 users: {
                     ...state.users,
                     [user.id] : user,
+                },
+                user: state.user,
+                isLoggedIn: state.isLoggedIn,
+            }
+        case "EDIT_USER":
+            const editedUser = action.payload;
+            return {
+                users: {
+                    ...state.users,
+                    [editedUser.id]: editedUser,
                 },
                 user: state.user,
                 isLoggedIn: state.isLoggedIn,

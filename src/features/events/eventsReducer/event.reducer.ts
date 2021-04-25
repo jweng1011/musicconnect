@@ -11,7 +11,7 @@ const event1: Event = {
     startDate: moment("20210407"),
     endDate: moment("20210407"),
     location: "Tufts",
-    accessibility: ["Handicap"],
+    accessibility: ["Wheelchair Accessible"],
     audienceSize: AudienceSize.Large,
     musicGenre: ["Rock"],
     appIds: []
@@ -24,9 +24,9 @@ const event2: Event = {
     startDate: moment("20210408"),
     endDate: moment("20210409"),
     location: "NEU",
-    accessibility: ["Handicap"],
+    accessibility: ["Wheelchair Accessible"],
     audienceSize: AudienceSize.Medium,
-    musicGenre: ["Pop"],
+    musicGenre: ["Pop", "Funk", "Rock"],
     appIds: []
 }
 
@@ -39,7 +39,7 @@ const event3: Event = {
     location: "Harvard",
     accessibility: [],
     audienceSize: AudienceSize.Large,
-    musicGenre: ["Funk"],
+    musicGenre: ["Funk", "RnB"],
     appIds: []
 }
 

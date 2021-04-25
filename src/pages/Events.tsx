@@ -67,13 +67,16 @@ export function Events() {
             {isApplyEventModalVisible ? applyModal : null}
             {isEventModalVisible ? eventModal : null}
             <NavBar/>
-            <div className={`max-w-3xl m-auto py-16 space-y-3`}>
-                <Title level={3}>Events</Title>
-                <Tabs defaultActiveKey="1">
-                    <TabPane tab="Browse all" key="1">
-                            {eventsCardList}
-                    </TabPane>
-                </Tabs>
+            <div className={`max-w-3xl m-auto py-16 space-y-8`}>
+                <Title level={4}>Events</Title>
+                <div className={`border-t`}>
+                    {/*<Tabs defaultActiveKey="1">*/}
+                    {/*    <TabPane tab="Browse all" key="1">*/}
+                    {/*        {eventsCardList}*/}
+                    {/*    </TabPane>*/}
+                    {/*</Tabs>*/}
+                    {eventsCardList}
+                </div>
             </div>
         </>
     )

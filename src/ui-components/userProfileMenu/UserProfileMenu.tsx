@@ -20,7 +20,7 @@ export function UserProfileMenu() {
     const userMenu =
         <Menu>
             <Menu.Item key="0">
-                <Link to={""}>Edit Profile</Link>
+                <Link to={'/profile'}>View Profile</Link>
             </Menu.Item>
             {/*<Menu.Item key="1">*/}
             {/*    <Link to={"/myEvents"}>Publish Events</Link>*/}
