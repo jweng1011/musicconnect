@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/musicconnect/static/css/main.6ecc1e8d.chunk.css",
-    "main.js": "/musicconnect/static/js/main.674a773c.chunk.js",
-    "main.js.map": "/musicconnect/static/js/main.674a773c.chunk.js.map",
+    "main.js": "/musicconnect/static/js/main.c992086d.chunk.js",
+    "main.js.map": "/musicconnect/static/js/main.c992086d.chunk.js.map",
     "runtime-main.js": "/musicconnect/static/js/runtime-main.564096c2.js",
     "runtime-main.js.map": "/musicconnect/static/js/runtime-main.564096c2.js.map",
     "static/css/2.f23775a9.chunk.css": "/musicconnect/static/css/2.f23775a9.chunk.css",
-    "static/js/2.3614b5b6.chunk.js": "/musicconnect/static/js/2.3614b5b6.chunk.js",
-    "static/js/2.3614b5b6.chunk.js.map": "/musicconnect/static/js/2.3614b5b6.chunk.js.map",
+    "static/js/2.dd02159a.chunk.js": "/musicconnect/static/js/2.dd02159a.chunk.js",
+    "static/js/2.dd02159a.chunk.js.map": "/musicconnect/static/js/2.dd02159a.chunk.js.map",
     "static/js/3.2ee58d0f.chunk.js": "/musicconnect/static/js/3.2ee58d0f.chunk.js",
     "static/js/3.2ee58d0f.chunk.js.map": "/musicconnect/static/js/3.2ee58d0f.chunk.js.map",
     "index.html": "/musicconnect/index.html",
     "static/css/2.f23775a9.chunk.css.map": "/musicconnect/static/css/2.f23775a9.chunk.css.map",
     "static/css/main.6ecc1e8d.chunk.css.map": "/musicconnect/static/css/main.6ecc1e8d.chunk.css.map",
-    "static/js/2.3614b5b6.chunk.js.LICENSE.txt": "/musicconnect/static/js/2.3614b5b6.chunk.js.LICENSE.txt"
+    "static/js/2.dd02159a.chunk.js.LICENSE.txt": "/musicconnect/static/js/2.dd02159a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.564096c2.js",
     "static/css/2.f23775a9.chunk.css",
-    "static/js/2.3614b5b6.chunk.js",
+    "static/js/2.dd02159a.chunk.js",
     "static/css/main.6ecc1e8d.chunk.css",
-    "static/js/main.674a773c.chunk.js"
+    "static/js/main.c992086d.chunk.js"
   ]
 }
