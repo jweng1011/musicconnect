@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/musicconnect/static/css/main.6ecc1e8d.chunk.css",
-    "main.js": "/musicconnect/static/js/main.57bb1427.chunk.js",
-    "main.js.map": "/musicconnect/static/js/main.57bb1427.chunk.js.map",
+    "main.js": "/musicconnect/static/js/main.674a773c.chunk.js",
+    "main.js.map": "/musicconnect/static/js/main.674a773c.chunk.js.map",
     "runtime-main.js": "/musicconnect/static/js/runtime-main.564096c2.js",
     "runtime-main.js.map": "/musicconnect/static/js/runtime-main.564096c2.js.map",
     "static/css/2.f23775a9.chunk.css": "/musicconnect/static/css/2.f23775a9.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.f23775a9.chunk.css",
     "static/js/2.3614b5b6.chunk.js",
     "static/css/main.6ecc1e8d.chunk.css",
-    "static/js/main.57bb1427.chunk.js"
+    "static/js/main.674a773c.chunk.js"
   ]
 }
